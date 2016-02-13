@@ -76,33 +76,59 @@ class ChatMessageParserTests: XCTestCase {
         XCTAssertEqual(MessageParser.matchMentions(message), mentions, "Emails shouldn't be considered as mentions")
     }
     
-    func testMatchURLs() {
+    func testMatchValidURLs() {
         var message = "See this:  http://www.nbcolympics.com"
         var URLs = ["http://www.nbcolympics.com"]
-        XCTAssertEqual(MessageParser.matchURLs(message), URLs, "URL starting with http not matched correctly")
+        XCTAssertEqual(MessageParser.matchURLs(message), URLs, "URL starting with http should match")
 
         message = "See this:  https://www.nbcolympics.com"
         URLs = ["https://www.nbcolympics.com"]
-        XCTAssertEqual(MessageParser.matchURLs(message), URLs, "URL starting with https not matched correctly")
+        XCTAssertEqual(MessageParser.matchURLs(message), URLs, "URL starting with https should match")
         
         message = "See this:  HTTP://www.nbcolympics.com"
         URLs = ["HTTP://www.nbcolympics.com"]
-        XCTAssertEqual(MessageParser.matchURLs(message), URLs, "URL starting with HTTP not matched correctly")
+        XCTAssertEqual(MessageParser.matchURLs(message), URLs, "URL starting with HTTP should match")
         
         message = "See this:  HTTPS://www.nbcolympics.com"
         URLs = ["HTTPS://www.nbcolympics.com"]
-        XCTAssertEqual(MessageParser.matchURLs(message), URLs, "URL starting with HTTPS not matched correctly")
+        XCTAssertEqual(MessageParser.matchURLs(message), URLs, "URL starting with HTTPS should match")
         
         message = "See this:  www.nbcolympics.com"
         URLs = ["www.nbcolympics.com"]
-        XCTAssertNotEqual(MessageParser.matchURLs(message), URLs, "URL starting with www not matched correctly")
+        XCTAssertNotEqual(MessageParser.matchURLs(message), URLs, "URL starting with only www shoul match")
+        
+        message = "See this:  http://subdomain.nbcolympics.com chris?"
+        URLs = ["http://subdomain.nbcolympics.com"]
+        XCTAssertEqual(MessageParser.matchURLs(message), URLs, "URL starting with http and subdomain name should match")
+    }
+    
+    func testComplexFormedURLsMatch(){
+        var message = "See this:  http://subdomain.nbcolympics.com?param=hi&param2=there chris?"
+        var URLs = ["http://subdomain.nbcolympics.com?param=hi&param2=there"]
+        XCTAssertEqual(MessageParser.matchURLs(message), URLs, "URL with parameters should match")
+        
+        message = "See this:  http://subdomain.nbcolympics.com?param=hi&param2=there chris?"
+        URLs = ["http://subdomain.nbcolympics.com?param=hi&param2=there"]
+        XCTAssertEqual(MessageParser.matchURLs(message), URLs, "URL with parameters should match")
+       
+        message = "Did you visit https://www.atlassian.com?param=@h-i*u^r/l chris?"
+        URLs = ["https://www.atlassian.com?param=@h-i*u^r/l"]
+        XCTAssertEqual(MessageParser.matchURLs(message), URLs, "special characters inside URL shoud be matched")
+    }
+    
+    func testInvalidURLsShouldNotMatch(){
+        var message = "See this: subdomain.nbcolympics.com"
+        let URLs = []
+        XCTAssertEqual(MessageParser.matchURLs(message), URLs, "URL not starting with http or www should not match")
+        
+        message = "See this: http:// subdomain.nbcolympics.com"
+        XCTAssertEqual(MessageParser.matchURLs(message), URLs, "URL with white space should not match")
     }
     
     func testMatchValidEmoticons(){
         var message = "(happy) Hi there"
         var emoticons = ["(happy)"]
         XCTAssertEqual(MessageParser.matchEmoticons(message), emoticons, "Starting with emoticon should match")
-        
         
         message = "Hi (happy) there"
         emoticons = ["(happy)"]

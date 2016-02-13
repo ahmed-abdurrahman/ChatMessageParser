@@ -7,30 +7,32 @@
 //
 
 import XCTest
+
 @testable import ChatMessageParser
 
 class ChatMessageParserTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testMatchURLs() {
+        var message = "@chris, good morning! (megusta) (coffee). See this:  http://www.nbcolympics.com"
+        var URLs = ["http://www.nbcolympics.com"]
+        XCTAssertEqual(MessageParser.matchURLs(message), URLs, "URL starting with http not matched correctly")
+
+        message = "See this:  https://www.nbcolympics.com"
+        URLs = ["https://www.nbcolympics.com"]
+        XCTAssertEqual(MessageParser.matchURLs(message), URLs, "URL starting with https not matched correctly")
+        
+        message = "See this:  HTTP://www.nbcolympics.com"
+        URLs = ["HTTP://www.nbcolympics.com"]
+        XCTAssertEqual(MessageParser.matchURLs(message), URLs, "URL starting with HTTP not matched correctly")
+        
+        message = "See this:  HTTPS://www.nbcolympics.com"
+        URLs = ["HTTPS://www.nbcolympics.com"]
+        XCTAssertEqual(MessageParser.matchURLs(message), URLs, "URL starting with HTTPS not matched correctly")
+        
+        message = "See this:  www.nbcolympics.com"
+        URLs = ["www.nbcolympics.com"]
+        XCTAssertNotEqual(MessageParser.matchURLs(message), URLs, "URL starting with www not matched correctly")
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
-    }
     
 }

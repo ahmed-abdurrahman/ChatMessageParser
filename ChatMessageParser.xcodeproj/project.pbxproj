@@ -13,6 +13,7 @@
 		C82A505B1C6DC214007E2A50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C82A505A1C6DC214007E2A50 /* Assets.xcassets */; };
 		C82A505E1C6DC214007E2A50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C82A505C1C6DC214007E2A50 /* LaunchScreen.storyboard */; };
 		C82A50691C6DC214007E2A50 /* ChatMessageParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82A50681C6DC214007E2A50 /* ChatMessageParserTests.swift */; };
+		C82A50761C6DC3C5007E2A50 /* MessageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82A50751C6DC3C5007E2A50 /* MessageParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,8 @@
 		C82A50641C6DC214007E2A50 /* ChatMessageParserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatMessageParserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C82A50681C6DC214007E2A50 /* ChatMessageParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageParserTests.swift; sourceTree = "<group>"; };
 		C82A506A1C6DC214007E2A50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C82A50751C6DC3C5007E2A50 /* MessageParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageParser.swift; sourceTree = "<group>"; };
+		C8DF1F471C6E60CE00C4E6C9 /* ChatMessage.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ChatMessage.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,12 +80,10 @@
 		C82A50521C6DC214007E2A50 /* ChatMessageParser */ = {
 			isa = PBXGroup;
 			children = (
-				C82A50531C6DC214007E2A50 /* AppDelegate.swift */,
-				C82A50551C6DC214007E2A50 /* ViewController.swift */,
 				C82A50571C6DC214007E2A50 /* Main.storyboard */,
-				C82A505A1C6DC214007E2A50 /* Assets.xcassets */,
-				C82A505C1C6DC214007E2A50 /* LaunchScreen.storyboard */,
-				C82A505F1C6DC214007E2A50 /* Info.plist */,
+				C82A50771C6DC3D3007E2A50 /* Services */,
+				C82A50741C6DC36F007E2A50 /* View Controllers */,
+				C82A50731C6DC347007E2A50 /* Supporting Files */,
 			);
 			path = ChatMessageParser;
 			sourceTree = "<group>";
@@ -94,6 +95,34 @@
 				C82A506A1C6DC214007E2A50 /* Info.plist */,
 			);
 			path = ChatMessageParserTests;
+			sourceTree = "<group>";
+		};
+		C82A50731C6DC347007E2A50 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C82A50531C6DC214007E2A50 /* AppDelegate.swift */,
+				C82A505A1C6DC214007E2A50 /* Assets.xcassets */,
+				C82A505C1C6DC214007E2A50 /* LaunchScreen.storyboard */,
+				C82A505F1C6DC214007E2A50 /* Info.plist */,
+				C8DF1F471C6E60CE00C4E6C9 /* ChatMessage.playground */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C82A50741C6DC36F007E2A50 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C82A50551C6DC214007E2A50 /* ViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		C82A50771C6DC3D3007E2A50 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C82A50751C6DC3C5007E2A50 /* MessageParser.swift */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +228,7 @@
 			files = (
 				C82A50561C6DC214007E2A50 /* ViewController.swift in Sources */,
 				C82A50541C6DC214007E2A50 /* AppDelegate.swift in Sources */,
+				C82A50761C6DC3C5007E2A50 /* MessageParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +416,7 @@
 				C82A506F1C6DC214007E2A50 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C82A50701C6DC214007E2A50 /* Build configuration list for PBXNativeTarget "ChatMessageParserTests" */ = {
 			isa = XCConfigurationList;
@@ -394,6 +425,7 @@
 				C82A50721C6DC214007E2A50 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

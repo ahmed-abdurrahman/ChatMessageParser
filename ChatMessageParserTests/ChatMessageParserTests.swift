@@ -98,5 +98,58 @@ class ChatMessageParserTests: XCTestCase {
         XCTAssertNotEqual(MessageParser.matchURLs(message), URLs, "URL starting with www not matched correctly")
     }
     
+    func testMatchValidEmoticons(){
+        var message = "(happy) Hi there"
+        var emoticons = ["(happy)"]
+        XCTAssertEqual(MessageParser.matchEmoticons(message), emoticons, "Starting with emoticon should match")
+        
+        
+        message = "Hi (happy) there"
+        emoticons = ["(happy)"]
+        XCTAssertEqual(MessageParser.matchEmoticons(message), emoticons, "Emoticon at the middle should match")
+        
+        message = "Hi there (happy)"
+        emoticons = ["(happy)"]
+        XCTAssertEqual(MessageParser.matchEmoticons(message), emoticons, "Emoticon at the end should match")
+        
+        message = "Hi there are you (happy)(chears)(awesome)"
+        emoticons = ["(happy)", "(chears)", "(awesome)"]
+        XCTAssertEqual(MessageParser.matchEmoticons(message), emoticons, "Multiple emoticons should match")
+        
+        message = "(happy1) Hi there"
+        emoticons = ["(happy1)"]
+        XCTAssertEqual(MessageParser.matchEmoticons(message), emoticons, "Alph-numeric emoticons should match")
+        
+        message = "Hi there(happy)"
+        emoticons = ["(happy)"]
+        XCTAssertEqual(MessageParser.matchEmoticons(message), emoticons, "Emoticon inside string should match")
+        
+        message = "Hi there are you (happy)?"
+        emoticons = ["(happy)"]
+        XCTAssertEqual(MessageParser.matchEmoticons(message), emoticons, "Emoticons with special characters boundary should match")
+    }
     
+    func testInvalidEmoticonsShouldNotMatch(){
+        var message = "Hi (ha ppy)"
+        let emoticons = []
+        XCTAssertEqual(MessageParser.matchEmoticons(message), emoticons, "Emoticons whith white space should not match")
+        
+        message = "Hi there (123456789abcdefg)"
+        XCTAssertEqual(MessageParser.matchEmoticons(message), emoticons, "Emoticons whith more than 15 characters should not match")
+        
+        message = "Hi there ()"
+        XCTAssertEqual(MessageParser.matchEmoticons(message), emoticons, "Empty parenthesis should no match")
+    }
+    
+    func testEmoticonsDelimitedWithSpecialCharactersShouldMatch(){
+        var message = "Hi there are you (happy)?"
+        let emoticons = ["(happy)"]
+        XCTAssertEqual(MessageParser.matchEmoticons(message), emoticons, "Emoticons whith white space should not match")
+        
+        message = "I'm (happy)."
+        XCTAssertEqual(MessageParser.matchEmoticons(message), emoticons, "Emoticons whith white space should not match")
+        
+        message = "Hi there are you (happy)there"
+        XCTAssertEqual(MessageParser.matchEmoticons(message), emoticons, "Emoticons whith white space should not match")
+    }
 }

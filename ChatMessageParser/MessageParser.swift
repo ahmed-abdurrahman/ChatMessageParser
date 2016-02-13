@@ -11,7 +11,8 @@ import Foundation
 enum Regex:String {
     case URL = "(?i)https?://(?:www\\.)?\\S+(?:/|\\b)"
     case Mention = "\\B@\\w+"
-//    case Emoticon = ""
+    case Emoticon = "\\(\\w{1,15}\\)"
+//    case Emoticon = "\\B\\(\\w{1,15}\\)\\B" // Emoticons with word boundary only
 }
 
 class MessageParser {
@@ -75,8 +76,13 @@ class MessageParser {
         return listMatches(Regex.URL.rawValue, inString: message)
     }
     
+    
     static func matchMentions(message: String) -> [String] {
         return listMatches(Regex.Mention.rawValue, inString: message)
+    }
+    
+    static func matchEmoticons(message: String) -> [String] {
+        return listMatches(Regex.Emoticon.rawValue, inString: message)
     }
 }
 

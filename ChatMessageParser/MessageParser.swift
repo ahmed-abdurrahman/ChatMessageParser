@@ -10,7 +10,7 @@ import Foundation
 
 enum Regex:String {
     case URL = "(?i)https?://(?:www\\.)?\\S+(?:/|\\b)"
-//    case Mention = ""
+    case Mention = "\\B@\\w+"
 //    case Emoticon = ""
 }
 
@@ -59,10 +59,6 @@ class MessageParser {
         return message
     }
 
-    static func matchURLs(message: String) -> [String] {
-        return listMatches(Regex.URL.rawValue, inString: message)
-    }
-
     static func listMatches(pattern: String, inString string: String) -> [String] {
         let regex = try? NSRegularExpression(pattern: pattern, options: [])
         let range = NSMakeRange(0, string.characters.count)
@@ -72,6 +68,15 @@ class MessageParser {
             let range = $0.range
             return (string as NSString).substringWithRange(range)
         }
+    }
+    
+    
+    static func matchURLs(message: String) -> [String] {
+        return listMatches(Regex.URL.rawValue, inString: message)
+    }
+    
+    static func matchMentions(message: String) -> [String] {
+        return listMatches(Regex.Mention.rawValue, inString: message)
     }
 }
 

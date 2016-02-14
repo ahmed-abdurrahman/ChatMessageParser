@@ -15,6 +15,12 @@ enum Regex:String {
 //    case Emoticon = "\\B\\(\\w{1,15}\\)\\B" // Emoticons with word boundary only
 }
 
+enum ContentTypes: String {
+    case URL = "links"
+    case Mention = "mentions"
+    case Emoticon = "emoticons"
+}
+
 class MessageParser {
     
     /**
@@ -52,12 +58,51 @@ class MessageParser {
      
      */
     static func parseMessage(message: String) -> String {
-        // TODO
-        // 1. Match all
-        // 2. Find URL titles
-        // 3. Serialize to JSON
+
+        var result = [String: [AnyObject]]()
         
-        return message
+        // 1. Match all
+        let mentions = matchMentions(message)
+        let emoticons = matchEmoticons(message)
+        let urls = matchURLs(message)
+        
+        if mentions.count > 0 {
+            // TODO remove @
+            result[ContentTypes.Mention.rawValue] = mentions
+        }
+        
+        if emoticons.count > 0 {
+            // TODO remove ()
+            result[ContentTypes.Emoticon.rawValue] = emoticons
+        }
+        
+        if urls.count > 0 {
+            // TODO grab titles
+            result[ContentTypes.URL.rawValue] = urls
+        }
+        
+        // 3. Serialize to JSON
+        guard let json = JSONSerialize(result) else {return "{}"}
+        
+        return json
+    }
+    
+    static func JSONSerialize(dictionary: [String: AnyObject]) -> String? {
+        do
+        {
+            let theJSONData = try NSJSONSerialization.dataWithJSONObject(
+                dictionary ,
+                options: NSJSONWritingOptions(rawValue: 0))
+            let theJSONText = NSString(data: theJSONData,
+                encoding: NSASCIIStringEncoding)
+
+            guard let serializedJSONText = theJSONText else {return nil}
+
+            return serializedJSONText as String
+        } catch let error as NSError {
+            print(error)
+            return nil
+        }
     }
 
     static func listMatches(pattern: String, inString string: String) -> [String] {

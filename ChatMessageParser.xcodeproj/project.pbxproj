@@ -25,6 +25,7 @@
 		C84E472F1C86293700DE9536 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E472E1C86293700DE9536 /* ChatViewController.swift */; };
 		C84E47311C862F7700DE9536 /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E47301C862F7700DE9536 /* ChatMessageCell.swift */; };
 		C84E47341C86306600DE9536 /* ChatTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E47331C86306600DE9536 /* ChatTableViewModel.swift */; };
+		C89AC60C1C86426A00D0167E /* URLTitleGrabber.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E472C1C86005700DE9536 /* URLTitleGrabber.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -367,6 +368,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C89AC60C1C86426A00D0167E /* URLTitleGrabber.swift in Sources */,
 				C81DE5D61C85E41E005A2F18 /* JSONSerializer.swift in Sources */,
 				C81DE5D51C85E1DD005A2F18 /* MessageParserTests.swift in Sources */,
 				C81DE5D21C85E0AF005A2F18 /* RegexMatcher.swift in Sources */,

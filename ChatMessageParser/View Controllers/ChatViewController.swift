@@ -10,28 +10,45 @@ import UIKit
 
 class ChatViewController: UIViewController {
     
-    /// IBOutlets
+    // MARK: - IBOutlets
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var messageTextView: UITextView!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var sendingActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var writeMessageView: UIView!
+    @IBOutlet weak var writeMessageBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var dismissKeyboardView: UIView!
     
     let MyMessageCellIdentifier = "MyMessageCell"
     let ParserReplyCellIdentifier = "ParserReplyCell"
     var tableModel = ChatTableViewModel()
     
-    /// View Controller Life Cycle
+    // MARK: - View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableview.rowHeight = UITableViewAutomaticDimension;
         self.tableview.estimatedRowHeight = 70;
         self.tableview.contentInset = UIEdgeInsets(top: 5.0, left: 0.0, bottom: 60.0, right: 0.0)
-//        tableModel.addDummyMessages()
+        self.dismissKeyboardView.hidden = true
+
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
+        addWelcomeMessage()
     }
     
-    /// Actions
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self);
+    }
+    
+    func addWelcomeMessage(){
+        addMessage("Hi there! It's my pleasure to analyse your chat messages. (I can detect @mentions, (emoticons) & links). Type in your first message..", type: .Reply)
+    }
+    
+    // MARK: - Actions
     @IBAction func sendTapped() {
         if messageTextView.text != "" {
+            doneEditing()
+
             let message = messageTextView.text
             addMessage(message, type: .Mine)
 
@@ -48,6 +65,36 @@ class ChatViewController: UIViewController {
                 self.addMessage(parsedMessageJSON, type: .Reply)
             })
         }
+    }
+    
+    @IBAction func dismissKeyboard(sender: UITapGestureRecognizer) {
+       doneEditing()
+    }
+    
+    func doneEditing(){
+        self.dismissKeyboardView.hidden = true
+        self.view.endEditing(true)
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        let info = notification.userInfo!
+        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+
+        self.writeMessageBottomConstraint.constant = keyboardFrame.size.height + 0
+        self.dismissKeyboardView.hidden = false
+        self.dismissKeyboardView.alpha = 0.1
+        print("will show")
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        self.writeMessageBottomConstraint.constant = 0
+        self.dismissKeyboardView.hidden = true
+        UIView.animateWithDuration(0.1, animations: { () -> Void in
+            self.view.layoutIfNeeded()
+        })
     }
     
     func addMessage(message: String, type: MessageType){
@@ -95,5 +142,19 @@ extension ChatViewController : UITableViewDataSource, UITableViewDelegate {
         cell.messageLabel.text = message.message
         
         return cell
+    }
+}
+
+extension ChatViewController: UITextViewDelegate {
+    
+    func textViewDidBeginEditing(textView: UITextView) {
+    }
+    
+    func textViewDidEndEditing(textView: UITextView){
+        textView.resignFirstResponder()
+    }
+    
+    func textViewDidChange(textView: UITextView) {
+
     }
 }

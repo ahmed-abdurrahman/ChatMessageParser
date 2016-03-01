@@ -58,7 +58,7 @@ class MessageParser {
         let mentions = RegexMatcher.matchMentions(message)
         let emoticons = RegexMatcher.matchEmoticons(message)
         let urls = RegexMatcher.matchURLs(message)
-        
+        print(urls)
         if mentions.count > 0 {
             result[ContentTypes.Mention.rawValue] = prepareMentions(mentions)
         }
@@ -83,7 +83,7 @@ class MessageParser {
     /**
         Prepares matched mentions by removing the @ character at the begenning.
      */
-    private static func prepareMentions(mentions: [String]) -> [String] {
+    static func prepareMentions(mentions: [String]) -> [String] {
         var preparedMentions = [String]()
         for mention in mentions {
             let preparedMention = String(mention.characters.dropFirst())
@@ -97,7 +97,7 @@ class MessageParser {
     /**
         Prepares matched emoticons by removing the first ( & last ) characters.
      */
-    private static func prepareEmoticons(emoticons: [String]) -> [String] {
+    static func prepareEmoticons(emoticons: [String]) -> [String] {
         var preparedEmoticons = [String]()
         for emoticon in emoticons {
             if emoticon.characters.count < 2 {continue}

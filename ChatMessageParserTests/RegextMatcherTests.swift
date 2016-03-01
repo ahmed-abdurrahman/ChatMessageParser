@@ -93,7 +93,7 @@ class RegexMatcherTests: XCTestCase {
         
         message = "See this:  www.nbcolympics.com"
         URLs = ["www.nbcolympics.com"]
-        XCTAssertNotEqual(RegexMatcher.matchURLs(message), URLs, "URL starting with only www shoul match")
+        XCTAssertEqual(RegexMatcher.matchURLs(message), URLs, "URL starting with only www shoul match")
         
         message = "See this:  http://subdomain.nbcolympics.com chris?"
         URLs = ["http://subdomain.nbcolympics.com"]

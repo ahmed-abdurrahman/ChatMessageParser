@@ -9,7 +9,7 @@
 import Foundation
 
 enum Regex:String {
-    case URL = "(?i)https?://(?:www\\.)?\\S+(?:/|\\b)"
+    case URL = "(?i)((https?://)|(?:www\\.))\\S+(?:/|\\b)"
     case Mention = "\\B@\\w+"
     case Emoticon = "\\(\\w{1,15}\\)"
 }

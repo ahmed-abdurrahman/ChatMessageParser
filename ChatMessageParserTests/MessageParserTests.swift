@@ -24,7 +24,14 @@ class MessageParserTests: XCTestCase {
         let mentions: [String] = ["@chris", "@ahmed","@"]
         let preparedMentions: [String] = ["chris","ahmed",""]
         
-        XCTAssertEqual(MessageParser.prepareMentions(mentions), preparedMentions, "@ at the begenning of the mentions shall be dropped")
+        XCTAssertEqual(MessageParser.prepareMentions(mentions), preparedMentions, "@ at the begenning of the mentions should be dropped")
+    }
+
+    func testPrepareEmoticons() {
+        let emoticons: [String] = ["(happy)", "(awesome)","()"]
+        let preparedEmoticons: [String] = ["happy","awesome",""]
+        
+        XCTAssertEqual(MessageParser.prepareEmoticons(emoticons), preparedEmoticons, "Paranthesis of emoticons should be dropped")
     }
 
 }

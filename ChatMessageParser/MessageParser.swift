@@ -91,10 +91,24 @@ class MessageParser {
         
         return preparedMentions
     }
+   
     
-    
-    
+    /**
+        Prepares matched emoticons by removing the first ( & last ) characters.
+     */
+    static func prepareEmoticons(emoticons: [String]) -> [String] {
+        var preparedEmoticons = [String]()
+        for emoticon in emoticons {
+            if emoticon.characters.count < 2 {continue}
+            
+            let range:Range<String.Index> = Range<String.Index>(start: emoticon.startIndex.advancedBy(1), end: emoticon.endIndex.advancedBy(-1))
+            let preparedEmoticon = emoticon.substringWithRange(range)
 
+            preparedEmoticons.append(preparedEmoticon)
+        }
+        
+        return preparedEmoticons
+    }
 }
 
 

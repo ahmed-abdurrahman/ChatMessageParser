@@ -21,6 +21,7 @@
 		C82A505E1C6DC214007E2A50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C82A505C1C6DC214007E2A50 /* LaunchScreen.storyboard */; };
 		C82A50691C6DC214007E2A50 /* RegextMatcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82A50681C6DC214007E2A50 /* RegextMatcherTests.swift */; };
 		C82A50761C6DC3C5007E2A50 /* MessageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82A50751C6DC3C5007E2A50 /* MessageParser.swift */; };
+		C84E472D1C86005700DE9536 /* URLTitleGrabber.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E472C1C86005700DE9536 /* URLTitleGrabber.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		C82A50681C6DC214007E2A50 /* RegextMatcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegextMatcherTests.swift; sourceTree = "<group>"; };
 		C82A506A1C6DC214007E2A50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C82A50751C6DC3C5007E2A50 /* MessageParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageParser.swift; sourceTree = "<group>"; };
+		C84E472C1C86005700DE9536 /* URLTitleGrabber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLTitleGrabber.swift; path = Utils/URLTitleGrabber.swift; sourceTree = "<group>"; };
 		C8DF1F471C6E60CE00C4E6C9 /* ChatMessage.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ChatMessage.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,6 +90,7 @@
 			children = (
 				C81DE5C91C85DB8D005A2F18 /* RegexMatcher.swift */,
 				C81DE5CC1C85DDF4005A2F18 /* JSONSerializer.swift */,
+				C84E472C1C86005700DE9536 /* URLTitleGrabber.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C84E472D1C86005700DE9536 /* URLTitleGrabber.swift in Sources */,
 				C81DE5CD1C85DDF4005A2F18 /* JSONSerializer.swift in Sources */,
 				C81DE5CA1C85DB8D005A2F18 /* RegexMatcher.swift in Sources */,
 				C82A50561C6DC214007E2A50 /* ViewController.swift in Sources */,

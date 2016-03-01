@@ -50,7 +50,7 @@ class MessageParser {
         In case no special content found, return an empty JSON object.
      
      */
-    static func parseMessage(message: String) -> String {
+    static func parseMessage(message: String, completion: (parsedMessageJSON: String)->Void) {
 
         var result = [String: [AnyObject]]()
         
@@ -64,25 +64,26 @@ class MessageParser {
         }
         
         if emoticons.count > 0 {
-            // TODO remove ()
-            result[ContentTypes.Emoticon.rawValue] = emoticons
+            result[ContentTypes.Emoticon.rawValue] = prepareEmoticons(emoticons)
         }
         
         if urls.count > 0 {
-            // TODO grab titles
-            result[ContentTypes.URL.rawValue] = urls
+            URLTitleGrabber.getURLsTitles(urls, completion: { (urlsWithTitles) -> Void in
+                
+                result[ContentTypes.URL.rawValue] = urlsWithTitles
+                let jsonString = JSONSerializer.JSONSerialize(result)
+                completion(parsedMessageJSON: jsonString)
+            })
+        } else {
+            let jsonString = JSONSerializer.JSONSerialize(result)
+            completion(parsedMessageJSON: jsonString)
         }
-        
-        // 3. Serialize to JSON
-        let json = JSONSerializer.JSONSerialize(result)
-        
-        return json
     }
     
     /**
         Prepares matched mentions by removing the @ character at the begenning.
      */
-    static func prepareMentions(mentions: [String]) -> [String] {
+    private static func prepareMentions(mentions: [String]) -> [String] {
         var preparedMentions = [String]()
         for mention in mentions {
             let preparedMention = String(mention.characters.dropFirst())
@@ -96,7 +97,7 @@ class MessageParser {
     /**
         Prepares matched emoticons by removing the first ( & last ) characters.
      */
-    static func prepareEmoticons(emoticons: [String]) -> [String] {
+    private static func prepareEmoticons(emoticons: [String]) -> [String] {
         var preparedEmoticons = [String]()
         for emoticon in emoticons {
             if emoticon.characters.count < 2 {continue}

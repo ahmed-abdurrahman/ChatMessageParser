@@ -8,13 +8,6 @@
 
 import Foundation
 
-enum Regex:String {
-    case URL = "(?i)https?://(?:www\\.)?\\S+(?:/|\\b)"
-    case Mention = "\\B@\\w+"
-    case Emoticon = "\\(\\w{1,15}\\)"
-//    case Emoticon = "\\B\\(\\w{1,15}\\)\\B" // Emoticons with word boundary only
-}
-
 enum ContentTypes: String {
     case URL = "links"
     case Mention = "mentions"
@@ -24,7 +17,7 @@ enum ContentTypes: String {
 class MessageParser {
     
     /**
-     Conversts chat message string into a JSON string containing information about its contents.
+     Converts chat message string into a JSON string containing information about its contents.
      
      Special content to look for includes:
      
@@ -62,13 +55,12 @@ class MessageParser {
         var result = [String: [AnyObject]]()
         
         // 1. Match all
-        let mentions = matchMentions(message)
-        let emoticons = matchEmoticons(message)
-        let urls = matchURLs(message)
+        let mentions = RegexMatcher.matchMentions(message)
+        let emoticons = RegexMatcher.matchEmoticons(message)
+        let urls = RegexMatcher.matchURLs(message)
         
         if mentions.count > 0 {
-            // TODO remove @
-            result[ContentTypes.Mention.rawValue] = mentions
+            result[ContentTypes.Mention.rawValue] = prepareMentions(mentions)
         }
         
         if emoticons.count > 0 {
@@ -82,53 +74,27 @@ class MessageParser {
         }
         
         // 3. Serialize to JSON
-        guard let json = JSONSerialize(result) else {return "{}"}
+        let json = JSONSerializer.JSONSerialize(result)
         
         return json
     }
     
-    static func JSONSerialize(dictionary: [String: AnyObject]) -> String? {
-        do
-        {
-            let theJSONData = try NSJSONSerialization.dataWithJSONObject(
-                dictionary ,
-                options: NSJSONWritingOptions(rawValue: 0))
-            let theJSONText = NSString(data: theJSONData,
-                encoding: NSASCIIStringEncoding)
-
-            guard let serializedJSONText = theJSONText else {return nil}
-
-            return serializedJSONText as String
-        } catch let error as NSError {
-            print(error)
-            return nil
+    /**
+        Prepares matched mentions by removing the @ character at the begenning.
+     */
+    static func prepareMentions(mentions: [String]) -> [String] {
+        var preparedMentions = [String]()
+        for mention in mentions {
+            let preparedMention = String(mention.characters.dropFirst())
+            preparedMentions.append(preparedMention)
         }
-    }
-
-    static func listMatches(pattern: String, inString string: String) -> [String] {
-        let regex = try? NSRegularExpression(pattern: pattern, options: [])
-        let range = NSMakeRange(0, string.characters.count)
-        guard let matches = regex?.matchesInString(string, options: [], range: range) else {return []}
         
-        return matches.map {
-            let range = $0.range
-            return (string as NSString).substringWithRange(range)
-        }
+        return preparedMentions
     }
     
     
-    static func matchURLs(message: String) -> [String] {
-        return listMatches(Regex.URL.rawValue, inString: message)
-    }
     
-    
-    static func matchMentions(message: String) -> [String] {
-        return listMatches(Regex.Mention.rawValue, inString: message)
-    }
-    
-    static func matchEmoticons(message: String) -> [String] {
-        return listMatches(Regex.Emoticon.rawValue, inString: message)
-    }
+
 }
 
 

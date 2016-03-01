@@ -7,12 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C81DE5CA1C85DB8D005A2F18 /* RegexMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DE5C91C85DB8D005A2F18 /* RegexMatcher.swift */; };
+		C81DE5CD1C85DDF4005A2F18 /* JSONSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DE5CC1C85DDF4005A2F18 /* JSONSerializer.swift */; };
+		C81DE5D21C85E0AF005A2F18 /* RegexMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DE5C91C85DB8D005A2F18 /* RegexMatcher.swift */; };
+		C81DE5D31C85E1B3005A2F18 /* MessageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82A50751C6DC3C5007E2A50 /* MessageParser.swift */; };
+		C81DE5D51C85E1DD005A2F18 /* MessageParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DE5D41C85E1DD005A2F18 /* MessageParserTests.swift */; };
+		C81DE5D61C85E41E005A2F18 /* JSONSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DE5CC1C85DDF4005A2F18 /* JSONSerializer.swift */; };
 		C82A50541C6DC214007E2A50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82A50531C6DC214007E2A50 /* AppDelegate.swift */; };
 		C82A50561C6DC214007E2A50 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82A50551C6DC214007E2A50 /* ViewController.swift */; };
 		C82A50591C6DC214007E2A50 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C82A50571C6DC214007E2A50 /* Main.storyboard */; };
 		C82A505B1C6DC214007E2A50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C82A505A1C6DC214007E2A50 /* Assets.xcassets */; };
 		C82A505E1C6DC214007E2A50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C82A505C1C6DC214007E2A50 /* LaunchScreen.storyboard */; };
-		C82A50691C6DC214007E2A50 /* ChatMessageParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82A50681C6DC214007E2A50 /* ChatMessageParserTests.swift */; };
+		C82A50691C6DC214007E2A50 /* RegextMatcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82A50681C6DC214007E2A50 /* RegextMatcherTests.swift */; };
 		C82A50761C6DC3C5007E2A50 /* MessageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82A50751C6DC3C5007E2A50 /* MessageParser.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +33,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C81DE5C81C85D347005A2F18 /* StringsManipulation.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = StringsManipulation.playground; sourceTree = "<group>"; };
+		C81DE5C91C85DB8D005A2F18 /* RegexMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegexMatcher.swift; path = Utils/RegexMatcher.swift; sourceTree = "<group>"; };
+		C81DE5CC1C85DDF4005A2F18 /* JSONSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONSerializer.swift; path = Utils/JSONSerializer.swift; sourceTree = "<group>"; };
+		C81DE5D41C85E1DD005A2F18 /* MessageParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageParserTests.swift; sourceTree = "<group>"; };
 		C82A50501C6DC214007E2A50 /* ChatMessageParser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatMessageParser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C82A50531C6DC214007E2A50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C82A50551C6DC214007E2A50 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,7 +45,7 @@
 		C82A505D1C6DC214007E2A50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C82A505F1C6DC214007E2A50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C82A50641C6DC214007E2A50 /* ChatMessageParserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatMessageParserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C82A50681C6DC214007E2A50 /* ChatMessageParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageParserTests.swift; sourceTree = "<group>"; };
+		C82A50681C6DC214007E2A50 /* RegextMatcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegextMatcherTests.swift; sourceTree = "<group>"; };
 		C82A506A1C6DC214007E2A50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C82A50751C6DC3C5007E2A50 /* MessageParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageParser.swift; sourceTree = "<group>"; };
 		C8DF1F471C6E60CE00C4E6C9 /* ChatMessage.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ChatMessage.playground; sourceTree = "<group>"; };
@@ -59,6 +69,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C81DE5CB1C85DB93005A2F18 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C81DE5C91C85DB8D005A2F18 /* RegexMatcher.swift */,
+				C81DE5CC1C85DDF4005A2F18 /* JSONSerializer.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		C82A50471C6DC214007E2A50 = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +101,7 @@
 			children = (
 				C82A50571C6DC214007E2A50 /* Main.storyboard */,
 				C82A50771C6DC3D3007E2A50 /* Services */,
+				C81DE5CB1C85DB93005A2F18 /* Utils */,
 				C82A50741C6DC36F007E2A50 /* View Controllers */,
 				C82A50731C6DC347007E2A50 /* Supporting Files */,
 			);
@@ -91,7 +111,8 @@
 		C82A50671C6DC214007E2A50 /* ChatMessageParserTests */ = {
 			isa = PBXGroup;
 			children = (
-				C82A50681C6DC214007E2A50 /* ChatMessageParserTests.swift */,
+				C82A50681C6DC214007E2A50 /* RegextMatcherTests.swift */,
+				C81DE5D41C85E1DD005A2F18 /* MessageParserTests.swift */,
 				C82A506A1C6DC214007E2A50 /* Info.plist */,
 			);
 			path = ChatMessageParserTests;
@@ -104,6 +125,7 @@
 				C82A505A1C6DC214007E2A50 /* Assets.xcassets */,
 				C82A505C1C6DC214007E2A50 /* LaunchScreen.storyboard */,
 				C82A505F1C6DC214007E2A50 /* Info.plist */,
+				C81DE5C81C85D347005A2F18 /* StringsManipulation.playground */,
 				C8DF1F471C6E60CE00C4E6C9 /* ChatMessage.playground */,
 			);
 			name = "Supporting Files";
@@ -226,6 +248,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C81DE5CD1C85DDF4005A2F18 /* JSONSerializer.swift in Sources */,
+				C81DE5CA1C85DB8D005A2F18 /* RegexMatcher.swift in Sources */,
 				C82A50561C6DC214007E2A50 /* ViewController.swift in Sources */,
 				C82A50541C6DC214007E2A50 /* AppDelegate.swift in Sources */,
 				C82A50761C6DC3C5007E2A50 /* MessageParser.swift in Sources */,
@@ -236,7 +260,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C82A50691C6DC214007E2A50 /* ChatMessageParserTests.swift in Sources */,
+				C81DE5D61C85E41E005A2F18 /* JSONSerializer.swift in Sources */,
+				C81DE5D51C85E1DD005A2F18 /* MessageParserTests.swift in Sources */,
+				C81DE5D21C85E0AF005A2F18 /* RegexMatcher.swift in Sources */,
+				C82A50691C6DC214007E2A50 /* RegextMatcherTests.swift in Sources */,
+				C81DE5D31C85E1B3005A2F18 /* MessageParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

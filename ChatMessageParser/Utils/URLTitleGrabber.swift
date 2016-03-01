@@ -31,12 +31,12 @@ class URLTitleGrabber {
                 case .Success:
                     if let value = response.result.value {
                         let json = JSON(value)
-                        let title = json["query"]["results"]["title"]
-                        if title != "null" {
-                            urlsWithTitles.append([url:title.stringValue])
-                        } else {
-                            urlsWithTitles.append([url:""])
-                        }
+                        var title = json["query"]["results"]["title"]
+                        
+                        if title == "null" {title = ""}
+                        
+                        urlsWithTitles.append(["url":url,
+                            "title":title.stringValue])
                     }
                 case .Failure(_):
                     urlsWithTitles.append([url:""])

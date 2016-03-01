@@ -27,7 +27,7 @@ xcuserdata
 *.xcscmblueprint
 
 .DS_Store
-Podfile.lock
+#Podfile.lock
 
 ## Obj-C/Swift specific
 *.hmap

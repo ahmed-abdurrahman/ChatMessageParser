@@ -1,25 +1,134 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="weI-Jr-OCB">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Intro View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="IntroViewController" customModule="ChatMessageParser" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hipchat" translatesAutoresizingMaskIntoConstraints="NO" id="GWO-GW-RZb">
+                                <rect key="frame" x="46" y="72" width="283" height="130"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to HipChat Message Parser" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTu-lq-T3W">
+                                <rect key="frame" x="16" y="252.5" width="343" height="23.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDa-5C-lDL">
+                                <rect key="frame" x="26" y="291.5" width="323" height="124"/>
+                                <string key="text">This app allows you to input a chat message string and convert it into a JSON string containing information about its contents. Special content to look for includes</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="21"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xi5-oc-LiO">
+                                <rect key="frame" x="16" y="587" width="343" height="60"/>
+                                <color key="backgroundColor" red="0.12549019607843137" green="0.32156862745098036" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="B4I-D6-TQj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Let's Get Started">
+                                    <color key="titleColor" name="controlLightHighlightColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="getStartedTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="psc-to-xWn"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CDa-5C-lDL" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="20" id="75w-sI-Hoy"/>
+                            <constraint firstItem="kTu-lq-T3W" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="DqV-or-75C"/>
+                            <constraint firstItem="Xi5-oc-LiO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="JlQ-g8-iNF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Xi5-oc-LiO" secondAttribute="trailing" id="QbQ-kD-nIx"/>
+                            <constraint firstItem="GWO-GW-RZb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="T8r-je-a4s"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kTu-lq-T3W" secondAttribute="trailing" id="TKg-gc-YLt"/>
+                            <constraint firstItem="kTu-lq-T3W" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UZp-0F-54a"/>
+                            <constraint firstItem="CDa-5C-lDL" firstAttribute="top" secondItem="kTu-lq-T3W" secondAttribute="bottom" constant="15" id="UiA-vK-44c"/>
+                            <constraint firstItem="GWO-GW-RZb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="VG9-tM-qFU"/>
+                            <constraint firstItem="CDa-5C-lDL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="eSE-Mj-pXH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CDa-5C-lDL" secondAttribute="trailing" constant="10" id="fso-1P-Hec"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Xi5-oc-LiO" secondAttribute="bottom" constant="20" id="kxC-5g-ijr"/>
+                            <constraint firstItem="Xi5-oc-LiO" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="lzs-5I-2md"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GWO-GW-RZb" secondAttribute="trailing" constant="30" id="mzR-Iy-rAA"/>
+                            <constraint firstItem="CDa-5C-lDL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wMS-01-WF4"/>
+                            <constraint firstItem="GWO-GW-RZb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xZB-t3-QaM"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="lzs-5I-2md"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="J0C-WK-uNG"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <segue destination="Tfr-hL-Jvo" kind="show" identifier="OpenChatScreenSegue" id="7sU-Ak-wnm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="358.5" y="-490.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Hpd-vv-zXU">
+            <objects>
+                <viewController id="Tfr-hL-Jvo" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uUq-JH-0Hh"/>
+                        <viewControllerLayoutGuide type="bottom" id="jl1-RR-hN6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OKe-LE-ph0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OWz-zu-jiv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="815.5" y="-490.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="A7m-QI-HCT">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="weI-Jr-OCB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kil-Vt-fUH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="7yb-tZ-aQw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5v6-K0-ay3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-110.5" y="-490.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="hipchat" width="398" height="130"/>
+    </resources>
 </document>

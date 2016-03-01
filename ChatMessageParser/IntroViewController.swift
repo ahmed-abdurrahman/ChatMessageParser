@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class IntroViewController: UIViewController {
 
     let message = "@bob @john (success) such a cool feature; https://twitter.com/jdorfman/status/430511497475670016"
     override func viewDidLoad() {
@@ -18,6 +18,11 @@ class ViewController: UIViewController {
        MessageParser.parseMessage(message) { (parsedMessageJSON) -> Void in
             print(parsedMessageJSON)
         }
+    }
+
+    
+    @IBAction func getStartedTapped() {
+        self.performSegueWithIdentifier("OpenChatScreenSegue", sender: self)
     }
    
 }

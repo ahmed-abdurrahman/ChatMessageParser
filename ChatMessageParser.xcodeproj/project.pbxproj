@@ -21,6 +21,7 @@
 		C82A505E1C6DC214007E2A50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C82A505C1C6DC214007E2A50 /* LaunchScreen.storyboard */; };
 		C82A50691C6DC214007E2A50 /* RegextMatcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82A50681C6DC214007E2A50 /* RegextMatcherTests.swift */; };
 		C82A50761C6DC3C5007E2A50 /* MessageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82A50751C6DC3C5007E2A50 /* MessageParser.swift */; };
+		C84B15EB1C8709B8001296B8 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84B15EA1C8709B8001296B8 /* UIViewControllerExtension.swift */; };
 		C84E472D1C86005700DE9536 /* URLTitleGrabber.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E472C1C86005700DE9536 /* URLTitleGrabber.swift */; };
 		C84E472F1C86293700DE9536 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E472E1C86293700DE9536 /* ChatViewController.swift */; };
 		C84E47311C862F7700DE9536 /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E47301C862F7700DE9536 /* ChatMessageCell.swift */; };
@@ -57,6 +58,7 @@
 		C82A50681C6DC214007E2A50 /* RegextMatcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegextMatcherTests.swift; sourceTree = "<group>"; };
 		C82A506A1C6DC214007E2A50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C82A50751C6DC3C5007E2A50 /* MessageParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageParser.swift; sourceTree = "<group>"; };
+		C84B15EA1C8709B8001296B8 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewControllerExtension.swift; path = Extensions/UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		C84E472C1C86005700DE9536 /* URLTitleGrabber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLTitleGrabber.swift; path = Utils/URLTitleGrabber.swift; sourceTree = "<group>"; };
 		C84E472E1C86293700DE9536 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = "View Controllers/ChatViewController.swift"; sourceTree = "<group>"; };
 		C84E47301C862F7700DE9536 /* ChatMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatMessageCell.swift; path = "View Controllers/Views/ChatMessageCell.swift"; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				C82A50571C6DC214007E2A50 /* Main.storyboard */,
 				C82A50771C6DC3D3007E2A50 /* Services */,
 				C81DE5CB1C85DB93005A2F18 /* Utils */,
+				C84B15EC1C8709C0001296B8 /* Extensions */,
 				C84E47351C86306C00DE9536 /* View Models */,
 				C82A50741C6DC36F007E2A50 /* View Controllers */,
 				C82A50731C6DC347007E2A50 /* Supporting Files */,
@@ -174,6 +177,14 @@
 				C82A50751C6DC3C5007E2A50 /* MessageParser.swift */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		C84B15EC1C8709C0001296B8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C84B15EA1C8709B8001296B8 /* UIViewControllerExtension.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		C84E47321C862F8200DE9536 /* Views */ = {
@@ -354,6 +365,7 @@
 			files = (
 				C84E472D1C86005700DE9536 /* URLTitleGrabber.swift in Sources */,
 				C81DE5CD1C85DDF4005A2F18 /* JSONSerializer.swift in Sources */,
+				C84B15EB1C8709B8001296B8 /* UIViewControllerExtension.swift in Sources */,
 				C81DE5CA1C85DB8D005A2F18 /* RegexMatcher.swift in Sources */,
 				C84E472F1C86293700DE9536 /* ChatViewController.swift in Sources */,
 				C82A50561C6DC214007E2A50 /* IntroViewController.swift in Sources */,

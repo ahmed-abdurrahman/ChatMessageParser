@@ -40,6 +40,19 @@ class ChatViewController: UIViewController {
         NSNotificationCenter.defaultCenter().removeObserver(self);
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        writeMessageView.transform = CGAffineTransformMakeTranslation(0, writeMessageView.bounds.height)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        spring(0.1) {
+            self.writeMessageView.transform = CGAffineTransformMakeTranslation(0, 0)
+        }
+    }
+    
+    
     func addWelcomeMessage(){
         addMessage("Hi there! It's my pleasure to analyse your chat messages. (I can detect @mentions, (emoticons) & links). Type in your first message..", type: .Reply)
     }
@@ -112,15 +125,6 @@ class ChatViewController: UIViewController {
         }
     }
     
-    func delay(delay:Double, closure:()->()) {
-        dispatch_after(
-            dispatch_time(
-                DISPATCH_TIME_NOW,
-                Int64(delay * Double(NSEC_PER_SEC))
-            ),
-            dispatch_get_main_queue(), closure)
-    }
-
 }
 
 extension ChatViewController : UITableViewDataSource, UITableViewDelegate {

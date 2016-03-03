@@ -25,3 +25,10 @@ String demo parser app parses & converts chat message strings into a JSON string
             "title": "NBC Olympics | 2014 NBC Olympics in Sochi Russia"
          }]
      }
+
+
+# Running the demo app
+
+The application was built with Xcode 7.2.1
+
+No need to run 'pod install', pods are already added to the repo. (https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control)

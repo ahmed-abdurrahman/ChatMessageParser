@@ -11,6 +11,8 @@
         </mutableArray>
         <mutableArray key="HelveticaNeueLights.ttc">
             <string>HelveticaNeue-Thin</string>
+            <string>HelveticaNeue-Light</string>
+            <string>HelveticaNeue-Light</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -95,7 +97,7 @@
             </objects>
             <point key="canvasLocation" x="358.5" y="-490.5"/>
         </scene>
-        <!--Chat View Controller-->
+        <!--Message Parser-->
         <scene sceneID="Hpd-vv-zXU">
             <objects>
                 <viewController id="Tfr-hL-Jvo" customClass="ChatViewController" customModule="ChatMessageParser" customModuleProvider="target" sceneMemberID="viewController">
@@ -287,6 +289,7 @@
                             <constraint firstItem="jl1-RR-hN6" firstAttribute="top" secondItem="2hc-iV-nRv" secondAttribute="bottom" id="uwt-pH-g8k"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Message Parser" id="CiE-qN-EEw"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="dismissKeyboardView" destination="NMR-tC-wtP" id="RdV-5q-Zmb"/>
@@ -313,9 +316,11 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="weI-Jr-OCB" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kil-Vt-fUH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="kil-Vt-fUH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.83253748923632465" green="0.914750290255258" blue="0.98321426581996429" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.12549019607843137" green="0.32156862745098036" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

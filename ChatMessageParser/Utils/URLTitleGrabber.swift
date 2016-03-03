@@ -39,7 +39,8 @@ class URLTitleGrabber {
                             "title":title.stringValue])
                     }
                 case .Failure(_):
-                    urlsWithTitles.append([url:""])
+                    urlsWithTitles.append(["url":url,
+                        "title":""])
                 }
                 
                 if urlsWithTitles.count == urls.count {
